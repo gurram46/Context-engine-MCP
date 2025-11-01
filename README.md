@@ -24,7 +24,7 @@ The code compiles to a reusable library, but distribution is still constrained b
 - Claude Code, Codex, Kilocode, and similar IDE MCP integrations appear to block third-party endpoints in their sandboxes, so this server never receives their requests.
 - Resume queries still need a SQL fix to handle legacy rows that lack `file_id` values (see `SessionManager.retrieveFullSession`).
 
-For the full set of blockers and suggested next steps, see [`docs/known-limitations.md`](docs/known-limitations.md) in the private deployment repository.
+For the full set of blockers and suggested next steps, see [`docs/known-limitations.md`](docs/known-limitations.md).
 
 ## Getting Started
 
