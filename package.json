@@ -8,7 +8,9 @@
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
     "typecheck": "tsc --noEmit",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "demo:migrate": "tsx src/demo/migrate.ts",
+    "demo:server": "tsx src/demo/server.ts"
   },
   "keywords": [
     "context-engine",
@@ -19,14 +21,17 @@
   "author": "Context Engine Team",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^16.4.5",
+    "fastify": "^4.25.2",
     "pg": "^8.11.3",
     "winston": "^3.11.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
-    "typescript": "^5.3.2",
-    "rimraf": "^5.0.5"
+    "rimraf": "^5.0.5",
+    "tsx": "^4.6.0",
+    "typescript": "^5.3.2"
   },
   "engines": {
     "node": ">=18.0.0"

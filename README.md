@@ -61,12 +61,50 @@ context-engine-core/
   src/
     business/
     database/
+      migrations/
     tools/
     types/
     utils/
+    demo/
   package.json
   tsconfig.json
 ```
+
+## Demo Server (Local Testing)
+
+The public package ships with a minimal Fastify server so contributors can exercise the core logic without the private authentication layer. The demo server uses a single demo token and user account.
+
+1. Copy the environment template and adjust as needed:
+   ```bash
+   cp .env.example .env
+   ```
+   - `DEMO_AUTH_TOKEN` defaults to `demo-token`. All requests must include `Authorization: Bearer demo-token` unless you set `DEMO_AUTH_MODE=none`.
+   - `DATABASE_URL` points to a local PostgreSQL instance by default.
+
+2. Run the migrations:
+   ```bash
+   npm run demo:migrate
+   ```
+
+3. Start the demo server:
+   ```bash
+   npm run demo:server
+   ```
+   The server listens on `http://127.0.0.1:8085` by default.
+
+4. Try the endpoints:
+   ```bash
+   curl -X POST http://127.0.0.1:8085/context/save \
+     -H "Content-Type: application/json" \
+     -H "Authorization: Bearer demo-token" \
+     -d '{
+       "session_name": "demo-session",
+       "project_name": "demo-project",
+       "files": [{"path": "README.md", "content": "# Demo"}],
+       "conversation": [{"role": "user", "content": "Initial instructions"}],
+       "metadata": {"tags": ["demo"]}
+     }'
+   ```
 
 ## Contributing
 
